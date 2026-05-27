@@ -43,6 +43,25 @@ An EDA (Exploratory data analysis) has been conducted in the data visulisation n
 
 ## Libraries and Modules 
 
+TensorFlow / Keras
+
+Numpy
+
+Pandas
+
+Matplotlib
+
+Seaborn
+
+Scikit Learn
+
+Joblib
+
+OS
+
+PIL 
+
+
 ## Unfixed Bugs 
 
 Some of the images from the database are corrupted, leading to them only being able to be partialy used. 
