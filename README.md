@@ -5,6 +5,8 @@ This project uses a machine learning pipeline to to catergorise fracture images 
 
 
 # Business Objectives
+The purpose of this project is to produces two CNN for fracture classification from Xray Images with an accuracy over 70%, this can be used in clinical settings to help with processing xray images of fractures and help in faster detection and therefor treatment. This project aims to catergorise the fractures into two catergories, fractured and non fractured with over 70% accuracy while minimising errors. 
+
 
 # ML Pipeline 
 
