@@ -1,5 +1,6 @@
 # Project Title: Xray Fracture Classification
 
+
 ## Introduction 
 
 This project uses a machine learning pipeline to to catergorise fracture images from Xrays. This project uses a CNN (convulutional neural network), and trains it to catergorise the bone xrays into fractured and non fractured using a kaggle Xray Fracture classification database. The xray database is saved and split into three catergories; train (training), val (validation) and test (testing). This project produced then trained and produced two CNN models for comparison and evaluation and compared there outputs suggesting future changes, limitations and issues arrised. 
@@ -33,13 +34,29 @@ An EDA (Exploratory data analysis) has been conducted in the data visulisation n
 
 ## 3. Model Building 
 
+
+
 ## 4. Model Evaluation 
+
+
 
 ## 5. Prediction 
 
+
+
 ## Jupyter Notebook Structure 
 
+The Jupyter notebook is split into three main files, the data collection file, the data visulisation file and the model evaluation file. 
+
+Each of the notebooks contain cells going through each process step by step.
+
 ## Future Work 
+
+- Training using a GPU to incrase model training speed
+
+- Retraining using a larger dataset to increse accuracy 
+
+
 
 ## Libraries and Modules 
 
@@ -70,5 +87,14 @@ The CNN are trained only on the CPU increasing the training time and slowing pro
 
 
 ## Acknowledgements and References
+
+Ai used to error check, suggest fixes/changes that were all review and checked and helped with evaluation and feedback 
+
+Code Institute Malaria Walkthrough 
+This code walkthrough has been used as basis for structure and large amounts of code have bben used ect 
+
+Data Set 
+
+UOP Module / Kaggle File 
 
 ## Conclusions 
