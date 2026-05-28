@@ -3,7 +3,9 @@
 
 ## Introduction 
 
-This project uses a machine learning pipeline to to catergorise fracture images from X-rays. This project uses a CNN (Convolutional Neural Network), and trains it to catergorise the bone X-rays into fractured and non fractured using a Kaggle X-ray Fracture classification database. The X-ray database is saved and split into three catergories: train (training), val (validation) and test (testing). This project trained and compared two CNN models comparing their outputs and suggesting future changes, limitations and issues the occured.
+This project uses a machine learning pipeline to to catergorise fracture images from X-rays. This project uses a CNN (Convolutional Neural Network), and trains it to catergorise the bone X-rays into fractured and non fractured using a Kaggle X-ray Fracture classification database. The X-ray database is saved and split into three catergories: train (training), val (validation) and test (testing).
+The ML Pipeline below shows the full process of this project, starting with the Data Collection and verification, to remove non-images and verify the data. This is followed by an EDA to allow for an understanding of the the data and the image sizeing and labels. Finaly the CNN models are produced with differing architecture to evalutate there effect on performace and accuracy with V2 producing a more accurate model. 
+ This project trained and compared two CNN models comparing their outputs and suggesting future changes, limitations and issues the occured.
 
 
 ## Business Objectives
@@ -114,24 +116,31 @@ Each of the notebooks contain cells going through each process step by step.
 
 ## Libraries and Modules 
 
-TensorFlow / Keras
+ 
 
 Numpy
+Numpy is a python library that allows for scientific computing and data analysis. It has been used in this project to find the mean of the image size dimentions in the EDA and to convert probabilitys into class labels.
 
 Pandas
+Pandas is a python data manipulation and analysis libary, it has been used to store counts for the bar charts, store the model training history. 
 
 Matplotlib
+Matplotlib is a python libary for static, animaated and interactive visulisations, it has been used in this project to produce the plots and graphs, show the sample images and plot data.
 
 Seaborn
+Seaborn is a python data visulisation libary, it was used to produce the label bar charts and the heat maps for the matricies.
 
-Scikit Learn
+Scikit-Learn
+Scikit-Learn is a python library for machine learning and data analysis, it has been used for the model evaluations, and recalling scores and model accuracy.
 
 Joblib
+Jonlib is a python library that provides light weight pipelining, this has been used for saving and loading image shapes and classes. It has also been used for the pkl files allowing them for later use.
 
 OS
+OS is gihubs operating system thats built in to the software, it has been used in a range of uses such as verifiying files exsist and listing file and directory contents. 
 
 PIL 
-
+PIL is a python image processing library, it has been used to allow the partialy truncated images to still partialy be usefull without crashing the software. 
 
 ## Unfixed Bugs 
 
