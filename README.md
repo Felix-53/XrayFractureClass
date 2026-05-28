@@ -22,7 +22,7 @@ This ML Pipeline is the workflow of the project that shows the building and trai
 
 The dataset used in this project is Bone Fracture Binary Classification from kaggle. The first stage for the dataprocessing is the removal of any non-images or invalid image formats, this is done by using the code below 
 
-'''python
+```python
 import os
 def remove_non_image_file(my_data_dir):
     image_extension = ('.png', '.jpg', '.jpeg') # Allowed image file options
@@ -50,13 +50,13 @@ def remove_non_image_file(my_data_dir):
 
     print(f"The Folder: {folder} - has this many image files",{number_of_images})
     print(f"Folder: {folder} - has this many non-image", {number_of_non_images})
-'''   
+```   
 
 This uses a list of accepted image extentions and removes and deletes the non-images then counting the amount of valid and the non-images. This prevents the program not working due to invalid files. 
 
 The dataset is then split into three catergories, train ,test and val. This isnt nessesarily requried as the selected database is alrady split so this is a verification. The data is split at the ratio of 70% to train, 20% to validation and 10% to testing.
 
-'''python
+```python
 import os 
 print (os.listdir('../data/test/')) # Lists all in test folder
 
@@ -65,7 +65,7 @@ train_set_ratio=0.7, # 70% of images go to training
 validation_set_ratio=0.1, # 10% of images go to val
 test_set_ratio=0.2 # 20% of images go to test
                                    )
-'''
+```
 
 ## 2. EDA 
 
@@ -87,7 +87,7 @@ CNNS (Convulutional Neural Networks) are widely used for image classificaiton as
 
 ### Model 1 Architecture
 
-'''python
+```python
 def create_tf_model_v1(): #Creates model v1
     model = Sequential()
 
@@ -125,11 +125,11 @@ def create_tf_model_v1(): #Creates model v1
 #import tensorflow as tf
 #model = tf.keras.models.load_model(f'{file_path_v1}/fracture_detection_model_v1.keras')
 #print('Model loaded successfully')
-'''
+```
 
 ### Model 2 Architecture
 
-'''python
+```python
 def create_tf_model_v2(): #Creates model v2
     model = Sequential()
 
@@ -167,12 +167,29 @@ def create_tf_model_v2(): #Creates model v2
 #import tensorflow as tf
 #model = tf.keras.models.load_model(f'{file_path_v2}/fracture_detection_model_v2.keras')
 #print('Model loaded successfully')
-'''
+```
 
 ### Differences in v1 to v2
 
 The filter sizes were increased form 64 to 128 from version 1 to version 2, giving more capacity to learn from the Xray images and idealy more accurate results.
 
+### Training hyperparameters
+
+|Parameter Changed|V1|V2|
+|---|---|---|
+|Epochs|25|8|
+|Conv Filters|32,64,64,128|32,64,128,128|
+
+|Constant Parameters|V1/V2|
+|---|---|
+|Batch Size|20|
+|Image Shape|(224,224,3)|
+|Early Stop| 3 |
+|Dropout Rate| 0.5|
+
+### Data Augmentation
+
+Data augmentations has been applied to the training images to prevent them overfitting, the used augmentations were (rotation, flipping and zoom)
 
 
 
