@@ -189,19 +189,120 @@ The filter sizes were increased form 64 to 128 from version 1 to version 2, givi
 
 ### Data Augmentation
 
-Data augmentations has been applied to the training images to prevent them overfitting, the used augmentations were (rotation, flipping and zoom)
+Data augmentations has been applied to the training images to prevent them overfitting, the used augmentations were rotation, flipping and zoom.
 
+### Model Configuration
 
+The model was confugured using the following:
+```python
 
+    model.compile(loss='binary_crossentropy',
+                  optimizer='adam',
+                  metrics=['accuracy'])
+```
+
+### Sigmoid Neuron
+
+A sigmoid neuron is a value between 0 and 1 in neural networks, it represents the probability of an image belonging to a class, a threshold of 0.5 has been selected with anything over 0.5 classified as fractured and anythig under classified as non-fractured. 
+
+```python
+  model.add(Dropout(0.5))
+    model.add(Dense(1, activation='sigmoid'))
+```
+
+### Optimiser
+
+Adam has been used as an optimiser, it adjusts the models weights during its training to reduce the losses.
+
+```python
+    model.compile(loss='binary_crossentropy',
+                  optimizer='adam',
+```
+
+### Model Accuracy
+
+To evaluate the model the metric of accuracy has been used, this is to see the models performance giving a clear understanding.
+
+```python
+                  metrics=['accuracy'])
+```
+
+### Model Loss
+
+Binary crossentrophy has been used as the loss function, this measures how accurate or wrong the model is during the training phase. Its used in binary problems. The model during training the model tries to minimise this. 
+
+ ```python
+   model.compile(loss='binary_crossentrophy',
+```
 
 ## 4. Model Evaluation 
 
+For the model evaluation both V1 and V2 were evaluated using a few factors: test performance, confusion matricies and their classification reports.
 
 
+### Model Training Results 
+
+| Training Metric | V1 | V2 |
+|---|---|---|
+| Highest Val Acc | 84.6% | 87.9% |
+| Best Val Loss | 0.38 | 0.29 |
+| Epochs Used | 8 | 8 |
+
+The models had early stopping, this used the val_loss and had a patience of 3, then the validation loss stopped improving the training stopped.
+
+### Model Testing Results 
+
+| Testing Metric | V1 | V2 |
+|---|---|---|
+| Highest Acc | 73.5% | 82.0% |
+| Best Val Loss | 0.54 | 0.29 |
+
+
+### Model Classification Report
+
+| Fracture Class | Class Presicion | Recall | F1 score |
+|---|---|---|---|
+| Fractured | 0.86 | 0.74 |  0.80 |
+| Non-Fractured | 0.79 | 0.90 |  0.84 |
+| Accuracy | na | na |  0.82 |
+
+### Model Comparison 
+
+Model V2 is more accurate than V1, it achives and accracy of 82% during testing while v1 only achives 73.5%. The reason for the accuracy increase is likely the increase in the filter sizes from v1 to v2 with v2 exposed to more fracture features. Both passed the 70% accuracy requirement.
 
 ## 5. Prediction 
 
+After the models were produced they were trained using hidden data, this has been done to ensure an enviroment more like real life where the program hasnt been exposed to the images before.
 
+```python
+test_set.reset()
+img_batch, label_batch = next(test_set)
+
+index = 1
+my_image = img_batch[index]
+true_label = int(label_batch[index])
+print(my_image.shape)
+print(true_label)
+print(f"This is '{class_names[true_label]}'")
+
+sns.set_style('white')
+plt.imshow(my_image)
+plt.show()
+my_image.shape
+```
+This tests the CNN one image at a time, if the index is changed the image changes..
+
+
+### Full Test
+
+Both of the models underwent a full test using 506 images.
+
+| Model | Correct | Incorrect |
+|---|---|---|
+| V1 | 372/506 | 134/506 |
+| v2 | 416/506 | 90/506 | 
+
+Model V2 correctly classified 416/506 showing ability to function on unseen images.
 
 ## Jupyter Notebook Structure 
 
