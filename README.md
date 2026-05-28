@@ -86,6 +86,7 @@ Two CNN models were produced using TensorFlow/Keras, allowing for comparison of 
 
 
 
+
 ## 5. Prediction 
 
 
@@ -93,6 +94,13 @@ Two CNN models were produced using TensorFlow/Keras, allowing for comparison of 
 ## Jupyter Notebook Structure 
 
 The Jupyter notebook is split into three main files, the data collection file, the data visulisation file and the model evaluation file. 
+
+DataCollection : Sets up the folders, removes non-images, validates the data.
+
+DataVisulisation : EDA, scatterplot of image dimentions, labels bar chart and some images displayed to verify quality.
+
+Models_Evaluation : Generates the data, model 1 and 2 trainingm testing, evalulation, confusion matricies and prediction.
+
 
 Each of the notebooks contain cells going through each process step by step.
 
