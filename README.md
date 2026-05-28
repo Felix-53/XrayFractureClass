@@ -83,6 +83,99 @@ Some of the images were displayed to verifiy their quality and labeling was corr
 
 Two CNN models were produced using TensorFlow/Keras, allowing for comparison of the models. 
 
+CNNS (Convulutional Neural Networks) are widely used for image classificaiton as they are effective at recognising patterns making them ideal for recognising fractures compared to non fractures.
+
+### Model 1 Architecture
+
+'''python
+def create_tf_model_v1(): #Creates model v1
+    model = Sequential()
+
+    model.add(Conv2D(filters=32, kernel_size=(3, 3),
+              input_shape=image_shape, activation='relu', ))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+
+    model.add(Conv2D(filters=64, kernel_size=(3, 3),
+              input_shape=image_shape, activation='relu', ))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+
+        model.add(Conv2D(filters=64, kernel_size=(3, 3),
+              input_shape=image_shape, activation='relu', ))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+
+    model.add(Conv2D(filters=128, kernel_size=(3, 3),
+              input_shape=image_shape, activation='relu', ))
+    model.add(MaxPooling2D(pool_size=(2, 2)))   
+
+    model.add(Flatten())
+    model.add(Dense(128, activation='relu'))
+
+    model.add(Dropout(0.5))
+    model.add(Dense(1, activation='sigmoid'))
+
+    model.compile(loss='binary_crossentropy',
+                  optimizer='adam',
+                  metrics=['accuracy'])
+
+    return model
+
+#model_v2 = create_tf_model_v2()
+#model_v2.fit(train_set,epochs=25,steps_per_epoch=len(train_set.classes) // batch_size,validation_data=validation_set,callbacks=[early_stop],verbose=1)
+
+#import tensorflow as tf
+#model = tf.keras.models.load_model(f'{file_path_v1}/fracture_detection_model_v1.keras')
+#print('Model loaded successfully')
+'''
+
+### Model 2 Architecture
+
+'''python
+def create_tf_model_v2(): #Creates model v2
+    model = Sequential()
+
+    model.add(Conv2D(filters=32, kernel_size=(3, 3),
+              input_shape=image_shape, activation='relu', ))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+
+    model.add(Conv2D(filters=64, kernel_size=(3, 3),
+              input_shape=image_shape, activation='relu', ))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+
+    model.add(Conv2D(filters=128, kernel_size=(3, 3),
+              input_shape=image_shape, activation='relu', ))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+
+    model.add(Conv2D(filters=128, kernel_size=(3, 3),
+              input_shape=image_shape, activation='relu', ))
+    model.add(MaxPooling2D(pool_size=(2, 2)))    
+
+    model.add(Flatten())
+    model.add(Dense(128, activation='relu'))
+
+    model.add(Dropout(0.5))
+    model.add(Dense(1, activation='sigmoid'))
+
+    model.compile(loss='binary_crossentropy',
+                  optimizer='adam',
+                  metrics=['accuracy'])
+
+    return model
+
+    #model_v2 = create_tf_model_v2()
+#model_v2.fit(train_set,epochs=8,steps_per_epoch=len(train_set.classes) // batch_size,validation_data=validation_set,callbacks=[early_stop],verbose=1)
+
+#import tensorflow as tf
+#model = tf.keras.models.load_model(f'{file_path_v2}/fracture_detection_model_v2.keras')
+#print('Model loaded successfully')
+'''
+
+### Differences in v1 to v2
+
+The filter sizes were increased form 64 to 128 from version 1 to version 2, giving more capacity to learn from the Xray images and idealy more accurate results.
+
+
+
+
 
 ## 4. Model Evaluation 
 
@@ -95,7 +188,9 @@ Two CNN models were produced using TensorFlow/Keras, allowing for comparison of 
 
 ## Jupyter Notebook Structure 
 
-The Jupyter notebook is split into three main files, the data collection file, the data visulisation file and the model evaluation file. 
+The Jupyter notebook is split into four main files, the data collection file, the data visulisation file and the model evaluation file. 
+
+Outputs: Contrains the v1 and v2 model outputs, and their conusion matricies.
 
 DataCollection : Sets up the folders, removes non-images, validates the data.
 
@@ -116,30 +211,30 @@ Each of the notebooks contain cells going through each process step by step.
 
 ## Libraries and Modules 
 
- 
+ This is a list of the librarys used in the project:
 
-Numpy
+### Numpy
 Numpy is a python library that allows for scientific computing and data analysis. It has been used in this project to find the mean of the image size dimentions in the EDA and to convert probabilitys into class labels.
 
-Pandas
+### Pandas
 Pandas is a python data manipulation and analysis libary, it has been used to store counts for the bar charts, store the model training history. 
 
-Matplotlib
+### Matplotlib
 Matplotlib is a python libary for static, animaated and interactive visulisations, it has been used in this project to produce the plots and graphs, show the sample images and plot data.
 
-Seaborn
+### Seaborn
 Seaborn is a python data visulisation libary, it was used to produce the label bar charts and the heat maps for the matricies.
 
-Scikit-Learn
+### Scikit-Learn
 Scikit-Learn is a python library for machine learning and data analysis, it has been used for the model evaluations, and recalling scores and model accuracy.
 
-Joblib
+### Joblib
 Jonlib is a python library that provides light weight pipelining, this has been used for saving and loading image shapes and classes. It has also been used for the pkl files allowing them for later use.
 
-OS
+### OS
 OS is gihubs operating system thats built in to the software, it has been used in a range of uses such as verifiying files exsist and listing file and directory contents. 
 
-PIL 
+### PIL 
 PIL is a python image processing library, it has been used to allow the partialy truncated images to still partialy be usefull without crashing the software. 
 
 ## Unfixed Bugs 
