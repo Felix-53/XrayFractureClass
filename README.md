@@ -119,12 +119,12 @@ def create_tf_model_v1(): #Creates model v1
 
     return model
 
-#model_v2 = create_tf_model_v2()
-#model_v2.fit(train_set,epochs=25,steps_per_epoch=len(train_set.classes) // batch_size,validation_data=validation_set,callbacks=[early_stop],verbose=1)
+model_v2 = create_tf_model_v2()
+model_v2.fit(train_set,epochs=25,steps_per_epoch=len(train_set.classes) // batch_size,validation_data=validation_set,callbacks=[early_stop],verbose=1)
 
-#import tensorflow as tf
-#model = tf.keras.models.load_model(f'{file_path_v1}/fracture_detection_model_v1.keras')
-#print('Model loaded successfully')
+import tensorflow as tf
+model = tf.keras.models.load_model(f'{file_path_v1}/fracture_detection_model_v1.keras')
+print('Model loaded successfully')
 ```
 
 ### Model 2 Architecture
@@ -161,12 +161,12 @@ def create_tf_model_v2(): #Creates model v2
 
     return model
 
-    #model_v2 = create_tf_model_v2()
-#model_v2.fit(train_set,epochs=8,steps_per_epoch=len(train_set.classes) // batch_size,validation_data=validation_set,callbacks=[early_stop],verbose=1)
+    model_v2 = create_tf_model_v2()
+model_v2.fit(train_set,epochs=8,steps_per_epoch=len(train_set.classes) // batch_size,validation_data=validation_set,callbacks=[early_stop],verbose=1)
 
-#import tensorflow as tf
-#model = tf.keras.models.load_model(f'{file_path_v2}/fracture_detection_model_v2.keras')
-#print('Model loaded successfully')
+import tensorflow as tf
+model = tf.keras.models.load_model(f'{file_path_v2}/fracture_detection_model_v2.keras')
+print('Model loaded successfully')
 ```
 
 ### Differences in v1 to v2
@@ -306,7 +306,7 @@ Model V2 correctly classified 416/506 showing ability to function on unseen imag
 
 ## Jupyter Notebook Structure 
 
-The Jupyter notebook is split into four main files, the data collection file, the data visulisation file and the model evaluation file. 
+The Jupyter notebook is split into three main files and a output file, the notebook files are:the data collection file, the data visulisation file and the model evaluation file. 
 
 Outputs: Contrains the v1 and v2 model outputs, and their conusion matricies.
 
@@ -347,13 +347,17 @@ Seaborn is a python data visulisation libary, it was used to produce the label b
 Scikit-Learn is a python library for machine learning and data analysis, it has been used for the model evaluations, and recalling scores and model accuracy.
 
 ### Joblib
-Jonlib is a python library that provides light weight pipelining, this has been used for saving and loading image shapes and classes. It has also been used for the pkl files allowing them for later use.
+Joblib is a python library that provides light weight pipelining, this has been used for saving and loading image shapes and classes. It has also been used for the pkl files allowing them for later use.
 
 ### OS
-OS is gihubs operating system thats built in to the software, it has been used in a range of uses such as verifiying files exsist and listing file and directory contents. 
+OS is a built in python module for system operations, such as creating files or listing directories.
 
 ### PIL 
-PIL is a python image processing library, it has been used to allow the partialy truncated images to still partialy be usefull without crashing the software. 
+PIL is a python image processing library, it has been used to allow the partialy truncated images to still partialy be usefull without crashing 
+the software. 
+
+### Tensorflow/Keras
+Tensor Flow is a machine learning framework used to build and train neural networks, Keras is its API used in this project to build train and save both CNN. 
 
 ## Unfixed Bugs 
 
@@ -364,13 +368,19 @@ The CNN are trained only on the CPU increasing the training time and slowing pro
 
 ## Acknowledgements and References
 
-Ai used to error check, suggest fixes/changes that were all review and checked and helped with evaluation and feedback 
+AI has been used throughout this project to debug, error fix and suggest minor changes to the code that were all manualy reviewd. Ai was also used to suggest a structure to the read me and give feedback for review.
 
 Code Institute Malaria Walkthrough 
-This code walkthrough has been used as basis for structure and large amounts of code have bben used ect 
+This code walkthrough has been used as basis for structure and with the code adapted from malaria identification to fracture identification. 
 
-Data Set 
 
-UOP Module / Kaggle File 
+Data Set : Bone fracture Binary Classification Kaggle.
+https://www.kaggle.com/datasets/bmadushanirodrigo/fracture-multi-region-x-ray-data
+
+
+M32895-2025/26-PAJAN has also been used for code that was adapted for the model evaluation in this project.
+
 
 ## Conclusions 
+
+This project sucsessfully produced and compared two CNN for binary bone fracture classification. Model v1 produced an accuracy of 73.5% while v2 produced an accuracy of 82% both passing the requried 70%. The Pipeline to  produce the model is reproduceable and clearly documented.
